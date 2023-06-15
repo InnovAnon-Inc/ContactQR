@@ -4,7 +4,8 @@ on:
     branches:
       # Specify branch from where you are sharing build
       #- default
-      [ "master" ]
+      #[ "master" ]
+      [ "main" ]
 
 jobs:
   build:
@@ -16,7 +17,8 @@ jobs:
         with:
           # Specify branch from where you are sharing build
           #ref: 'default'
-          ref: 'master'
+          #ref: 'master'
+          ref: 'main'
       - name: Setting up JDK 1.7
         uses: actions/setup-java@v1
         with:
