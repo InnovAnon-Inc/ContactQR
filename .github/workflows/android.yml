@@ -37,23 +37,23 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: bundle
-      - name: Uploading to IAS
-        id: ias
-      	uses: sagar-viradiya/internal-app-sharing-action@v1.1.0
-      	with:
-          # Your service account JSON GitHub secret
-      	  serviceAccountJsonPlainText: ${{ secrets.[your-github-service-acc-json-secret] }}
-          # Your package name
-          packageName: 'ContactQR'
-          aabFilePath: 'app-release.aab'
-      - name: Sharing on slack
-        uses: rtCamp/action-slack-notify@v2.1.0
-        env:
-          # Your slack webhook GitHub secret
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          # Slack channel where you want to notify
-          SLACK_CHANNEL: [your-channel]
-          SLACK_USERNAME: "JARVIS"
-          SLACK_TITLE: "Internal testing build"
-          SLACK_MESSAGE: ${{ steps.ias.outputs.downloadUrl }}
-
+#      - name: Uploading to IAS
+#         id: ias
+#      	uses: sagar-viradiya/internal-app-sharing-action@v1.1.0
+#      	with:
+#          # Your service account JSON GitHub secret
+#      	  serviceAccountJsonPlainText: ${{ secrets.[your-github-service-acc-json-secret] }}
+#          # Your package name
+#          packageName: 'ContactQR'
+#          aabFilePath: 'app-release.aab'
+#      - name: Sharing on slack
+#        uses: rtCamp/action-slack-notify@v2.1.0
+#        env:
+#          # Your slack webhook GitHub secret
+#          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+#          # Slack channel where you want to notify
+#          SLACK_CHANNEL: [your-channel]
+#          SLACK_USERNAME: "JARVIS"
+#          SLACK_TITLE: "Internal testing build"
+#          SLACK_MESSAGE: ${{ steps.ias.outputs.downloadUrl }}
+#
