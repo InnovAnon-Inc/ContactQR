@@ -1,0 +1,134 @@
+/**
+ * The first line in the build configuration applies the Android Gradle plugin
+ * to this build and makes the android block available to specify
+ * Android-specific build options.
+ */
+
+plugins {
+  id 'com.android.application'
+}
+
+/**
+ * The android block is where you configure all your Android-specific
+ * build options.
+ */
+
+android {
+
+  /**
+   * The app's namespace. Used primarily to access app resources.
+   */
+
+  namespace 'com.innovanon.contactqr'
+
+  /**
+   * compileSdk specifies the Android API level Gradle should use to
+   * compile your app. This means your app can use the API features included in
+   * this API level and lower.
+   */
+
+  //compileSdk 33
+  // Use the following syntax to access properties you defined at the project level:
+  // rootProject.ext.property_name
+  compileSdk rootProject.ext.sdkVersion
+
+  buildToolsVersion rootProject.ext.buildToolsVersion
+
+  /**
+   * The defaultConfig block encapsulates default settings and entries for all
+   * build variants and can override some attributes in main/AndroidManifest.xml
+   * dynamically from the build system. You can configure product flavors to override
+   * these values for different versions of your app.
+   */
+
+  defaultConfig {
+
+      // Uniquely identifies the package for publishing.
+      applicationId 'com.example.myapp'
+
+      // Defines the minimum API level required to run the app.
+      //minSdk 21
+      minSdk 26
+      //minSdkVersion 26
+
+      // Specifies the API level used to test the app.
+      targetSdk 33
+
+      // Defines the version number of your app.
+      versionCode 1
+
+      // Defines a user-friendly version name for your app.
+      versionName "1.0"
+  }
+
+  /**
+   * The buildTypes block is where you can configure multiple build types.
+   * By default, the build system defines two build types: debug and release. The
+   * debug build type is not explicitly shown in the default build configuration,
+   * but it includes debugging tools and is signed with the debug key. The release
+   * build type applies ProGuard settings and is not signed by default.
+   */
+
+   buildTypes {
+
+      /**
+       * By default, Android Studio configures the release build type to enable code
+       * shrinking, using minifyEnabled, and specifies the default ProGuard rules file.
+       */
+
+      release {
+            minifyEnabled true // Enables code shrinking for the release build type.
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+      }
+  }
+
+  /**
+   * The productFlavors block is where you can configure multiple product flavors.
+   * This lets you create different versions of your app that can
+   * override the defaultConfig block with their own settings. Product flavors
+   * are optional, and the build system does not create them by default.
+   *
+   * This example creates a free and paid product flavor. Each product flavor
+   * then specifies its own application ID, so that they can exist on the Google
+   * Play Store, or an Android device, simultaneously.
+   *
+   * If you declare product flavors, you must also declare flavor dimensions
+   * and assign each flavor to a flavor dimension.
+   */
+
+  flavorDimensions "tier"
+  productFlavors {
+      free {
+          dimension "tier"
+          applicationId 'com.example.myapp.free'
+      }
+
+      paid {
+          dimension "tier"
+          applicationId 'com.example.myapp.paid'
+      }
+  }
+
+  compileOptions {
+    sourceCompatibility = 1.7
+    targetCompatibility = 1.7
+  }
+}
+
+/**
+ * The dependencies block in the module-level build configuration file
+ * specifies dependencies required to build only the module itself.
+ * To learn more, go to Add build dependencies.
+ */
+
+dependencies {
+  //implementation project(":lib")
+  //implementation 'androidx.appcompat:appcompat:1.6.1'
+  implementation fileTree(dir: 'libs', include: ['*.jar'])
+  implementation "androidx.appcompat:appcompat:${rootProject.ext.appcompatVersion}"
+  //...
+  // https://mvnrepository.com/artifact/androidx.constraintlayout/constraintlayout
+  //runtimeOnly 'androidx.constraintlayout:constraintlayout:2.1.4'
+  implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+}
+

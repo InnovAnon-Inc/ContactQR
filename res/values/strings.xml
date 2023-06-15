@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Contact QR</string>
+      
+      <!-- add the following constants -->
+    <string name="contact_pick_text">Pick Contact</string>
+    <string name="contact_name_text">Contact Name</string>
+</resources>
+
