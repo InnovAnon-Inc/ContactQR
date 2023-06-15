@@ -100,12 +100,12 @@ android {
   productFlavors {
       free {
           dimension "tier"
-          applicationId 'com.example.myapp.free'
+          applicationId 'com.innovanon.contactqr.free'
       }
 
       paid {
           dimension "tier"
-          applicationId 'com.example.myapp.paid'
+          applicationId 'com.innovanon.contactqr.paid'
       }
   }
 
