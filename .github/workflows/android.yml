@@ -22,12 +22,12 @@ jobs:
       - name: Running build command
         # Run your own gradle command to generate build.
         run: ./gradlew bundleRelease
-      - name: Uploading build
-        uses: actions/upload-artifact@v2
-        with:
-          name: bundle
-          path: app/build/outputs/bundle/release/app-release.aab  
-
+#      - name: Uploading build
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: bundle
+#          path: app/build/outputs/bundle/release/app-release.aab  
+#
 #  upload_to_internal_app_sharing:
 #    name: Uploading build to IAS
 #    needs: build
