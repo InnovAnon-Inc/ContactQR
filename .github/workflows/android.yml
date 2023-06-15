@@ -12,9 +12,9 @@ jobs:
     steps:
       - name: Checking out branch
         uses: actions/checkout@v2
-          with:
-            # Specify branch from where you are sharing build
-            ref: 'default'
+        with:
+          # Specify branch from where you are sharing build
+          ref: 'default'
       - name: Setting up JDK 1.7
         uses: actions/setup-java@v1
         with:
