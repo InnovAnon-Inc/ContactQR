@@ -33,6 +33,7 @@ android {
   compileSdk rootProject.ext.sdkVersion
 
   buildToolsVersion rootProject.ext.buildToolsVersion
+  compileSdkVersion rootProject.ext.compileVersion
 
   /**
    * The defaultConfig block encapsulates default settings and entries for all
@@ -134,5 +135,28 @@ dependencies {
   // https://mvnrepository.com/artifact/androidx.constraintlayout/constraintlayout
   //runtimeOnly 'androidx.constraintlayout:constraintlayout:2.1.4'
   implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+  // TODO
+  //compile 'com.android.support:support-v4:13.0.+'
 }
+
+// https://gist.github.com/dylanPowers/6914381
+/*
+// NDK build support
+task buildNative(type: Exec) {
+    // A lot of samples don't specify the build directory.
+    commandLine 'ndk-build', '-C', 'src/main'
+}
+tasks.withType(Compile) { compileTask -> compileTask.dependsOn 'buildNative' }
+
+clean.dependsOn 'cleanNative'
+task cleanNative(type: Exec) {
+    commandLine 'ndk-build', 'clean', '-C', 'src/main'
+}
+
+// Copies the libs to the apk.
+tasks.withType(com.android.build.gradle.tasks.PackageApplication) { pkgTask ->
+    pkgTask.jniDir new File(projectDir, 'src/main/libs')
+}
+*/
 

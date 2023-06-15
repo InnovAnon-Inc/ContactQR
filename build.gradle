@@ -53,6 +53,8 @@ ext {
   //...
 
   buildToolsVersion = "34.0.0"
+  compileVersion = 33
+  //compileVersion = 32
 }
 //...
 
